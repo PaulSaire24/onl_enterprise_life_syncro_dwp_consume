@@ -6,10 +6,10 @@ public class SalesForceBO implements Serializable {
     private String idQuotation;
     private String idCustomer;
     private String idProduct;
-    private String idStatus;
-    private String idStatusType;
     private String employeeCode;
     private String source;
+    private StatusBO status;
+
     private String message;
 
     public String getIdQuotation() {
@@ -36,22 +36,6 @@ public class SalesForceBO implements Serializable {
         this.idProduct = idProduct;
     }
 
-    public String getIdStatus() {
-        return idStatus;
-    }
-
-    public void setIdStatus(String idStatus) {
-        this.idStatus = idStatus;
-    }
-
-    public String getIdStatusType() {
-        return idStatusType;
-    }
-
-    public void setIdStatusType(String idStatusType) {
-        this.idStatusType = idStatusType;
-    }
-
     public String getEmployeeCode() {
         return employeeCode;
     }
@@ -68,6 +52,14 @@ public class SalesForceBO implements Serializable {
         this.source = source;
     }
 
+    public StatusBO getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusBO status) {
+        this.status = status;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -82,10 +74,9 @@ public class SalesForceBO implements Serializable {
                 "idQuotation='" + idQuotation + '\'' +
                 ", idCustomer='" + idCustomer + '\'' +
                 ", idProduct='" + idProduct + '\'' +
-                ", idStatus='" + idStatus + '\'' +
-                ", idStatusType='" + idStatusType + '\'' +
                 ", employeeCode='" + employeeCode + '\'' +
                 ", source='" + source + '\'' +
+                ", status=" + status +
                 ", message='" + message + '\'' +
                 '}';
     }

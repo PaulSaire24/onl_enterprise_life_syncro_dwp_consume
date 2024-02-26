@@ -31,7 +31,7 @@ public class RBVDR408Impl extends RBVDR408Abstract {
 
 		String jsonString = this.getRequestBodyAsJsonFormat(requestBO);
 		LOGGER.info("***** RBVDR408Impl - executeConsumeDWPServiceForUpdateStatus ***** Param: {}", jsonString);
-		HttpEntity<String> entity = new HttpEntity<>(jsonString, createHttpHeaders(authentication));
+			HttpEntity<String> entity = new HttpEntity<>(jsonString, createHttpHeaders(authentication));
 		try {
 			ResponseEntity<SalesForceBO> responseEntity = this.externalApiConnector.postForEntity(SERVICE_CONNECTION_PROPERTY, entity,
 					SalesForceBO.class);
