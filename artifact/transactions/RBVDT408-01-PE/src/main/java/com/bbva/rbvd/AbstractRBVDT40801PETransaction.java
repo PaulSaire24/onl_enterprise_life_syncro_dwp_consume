@@ -14,12 +14,15 @@ public abstract class AbstractRBVDT40801PETransaction extends AbstractTransactio
 
 
 	/**
-	 * Return value for input parameter
+	 * Return value for input parameter header
 	 */
 	protected DwpConsumeHeaderDTO getHeader() {
 		return (DwpConsumeHeaderDTO) this.getParameter("header");
 	}
 
+	/**
+	 * Return value for input parameter insuranceStatusUpdated
+	 */
 	protected DwpConsumeDTO getInsuranceStatusUpdated() {
 		return (DwpConsumeDTO) this.getParameter("insuranceStatusUpdated");
 	}
