@@ -1,6 +1,10 @@
 package com.bbva.rbvd.dto.dwpconnection;
 
-public class ChannelDTO {
+import java.io.Serializable;
+
+public class ChannelDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String id;
     private String name;
     private String type;

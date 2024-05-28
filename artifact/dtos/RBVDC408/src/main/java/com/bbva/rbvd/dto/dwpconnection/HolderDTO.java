@@ -1,8 +1,12 @@
 package com.bbva.rbvd.dto.dwpconnection;
 
-public class HolderDTO {
+import java.io.Serializable;
+
+public class HolderDTO implements Serializable {
     private String id;
     private IdentityDocumentDTO identityDocument;
+    private static final long serialVersionUID = 1L;
+
 
     public String getId() {
         return id;
