@@ -3,6 +3,7 @@ package com.bbva.rbvd;
 import com.bbva.elara.domain.transaction.Severity;
 import com.bbva.elara.domain.transaction.response.HttpResponseCode;
 import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
+import com.bbva.rbvd.dto.dwpconnection.header.DwpConsumeHeaderDTO;
 import com.bbva.rbvd.lib.r408.RBVDR408;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,6 +25,10 @@ public class RBVDT40801PETransaction extends AbstractRBVDT40801PETransaction {
 		// TODO - Implementation of business logic
 		DwpConsumeDTO requestEventBody;
 		requestEventBody = this.getInsuranceStatusUpdated();
+		DwpConsumeHeaderDTO header = this.getHeader();
+		LOGGER.info("RBVDT40801PETransaction - execute() | START");
+		LOGGER.info("RBVDT40801PETransaction - execute() | Input : {}", requestEventBody);
+		LOGGER.info("RBVDT40801PETransaction - execute() | Input : {}", header);
 
 		boolean response = rbvdR408.executeConsumeDWPServiceForUpdateStatus(requestEventBody);
 

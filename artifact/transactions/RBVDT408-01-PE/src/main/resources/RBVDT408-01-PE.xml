@@ -63,7 +63,7 @@
       <parameter order="1" name="id" mandatory="0" type="String" size="30" />
       <parameter order="2" name="name" mandatory="0" type="String" size="30" />
     </dto>
-    <parameter order="8" name="operationDate" mandatory="0" type="String" size="30" />
+    <parameter order="8" name="operationDate" mandatory="0" type="String" size="36" />
     <dto order="9" name="holder" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.HolderDTO" artifactId="RBVDC408">
       <parameter order="1" name="id" mandatory="0" type="String" size="30" />
       <dto order="2" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.IdentityDocumentDTO" artifactId="RBVDC408">
@@ -73,7 +73,7 @@
         </dto>
       </dto>
     </dto>
-    <parameter order="10" name="quotationId" mandatory="0" type="String" size="30" />
+    <parameter order="10" name="quotationId" mandatory="0" type="String" size="36" />
   </dto>
  </paramsIn>
  <paramsOut/>
