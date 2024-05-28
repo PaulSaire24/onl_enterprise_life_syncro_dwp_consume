@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class StatusDTO implements Serializable {
     private String id;
     private String name;
-    private String type;
+    private String statusType;
 
     public String getId() {
         return id;
@@ -23,12 +23,12 @@ public class StatusDTO implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getStatusType() {
+        return statusType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setStatusType(String statusType) {
+        this.statusType = statusType;
     }
 
     @Override
@@ -36,7 +36,7 @@ public class StatusDTO implements Serializable {
         return "StatusDTO{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
+                ", type='" + statusType + '\'' +
                 '}';
     }
 }

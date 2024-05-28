@@ -2,7 +2,9 @@ package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
 import com.bbva.rbvd.dto.dwpconnection.AuditUserDTO;
+import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
 import com.bbva.rbvd.dto.dwpconnection.StatusDTO;
+import com.bbva.rbvd.dto.dwpconnection.header.DwpConsumeHeaderDTO;
 
 /**
  * In this class, the input and output data is defined automatically through the setters and getters.
@@ -14,44 +16,13 @@ public abstract class AbstractRBVDT40801PETransaction extends AbstractTransactio
 
 
 	/**
-	 * Return value for input parameter customerId
+	 * Return value for input parameter
 	 */
-	protected String getCustomerid(){
-		return (String)this.getParameter("customerId");
+	protected DwpConsumeHeaderDTO getHeader() {
+		return (DwpConsumeHeaderDTO) this.getParameter("header");
 	}
 
-	/**
-	 * Return value for input parameter quotationId
-	 */
-	protected String getQuotationid(){
-		return (String)this.getParameter("quotationId");
-	}
-
-	/**
-	 * Return value for input parameter productId
-	 */
-	protected String getProductid(){
-		return (String)this.getParameter("productId");
-	}
-
-	/**
-	 * Return value for input parameter status
-	 */
-	protected StatusDTO getStatus(){
-		return (StatusDTO)this.getParameter("status");
-	}
-
-	/**
-	 * Return value for input parameter source
-	 */
-	protected String getSource(){
-		return (String)this.getParameter("source");
-	}
-
-	/**
-	 * Return value for input parameter auditUser
-	 */
-	protected AuditUserDTO getAudituser(){
-		return (AuditUserDTO)this.getParameter("auditUser");
+	protected DwpConsumeDTO getInsuranceStatusUpdated() {
+		return (DwpConsumeDTO) this.getParameter("insuranceStatusUpdated");
 	}
 }

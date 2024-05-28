@@ -1,15 +1,26 @@
 package com.bbva.rbvd.dto.dwpconnection;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class DwpConsumeDTO implements Serializable {
     private String customerId;
     private String quotationId;
-    private String productId;
+    private String quotationIdReference;
+    private ProductDTO product;
     private StatusDTO status;
-    private String source;
+    private String sourcePayroll;
     private AuditUserDTO auditUser;
+    private ChannelDTO channel;
+    private Date operationDate;
+    private HolderDTO holder;
 
+    public String getQuotationId() {
+        return quotationId;
+    }
+    public void setQuotationId(String quotationId) {
+        this.quotationId = quotationId;
+    }
     public String getCustomerId() {
         return customerId;
     }
@@ -18,20 +29,20 @@ public class DwpConsumeDTO implements Serializable {
         this.customerId = customerId;
     }
 
-    public String getQuotationId() {
-        return quotationId;
+    public String getQuotationIdReference() {
+        return quotationIdReference;
     }
 
-    public void setQuotationId(String quotationId) {
-        this.quotationId = quotationId;
+    public void setQuotationIdReference(String quotationIdReference) {
+        this.quotationIdReference = quotationIdReference;
     }
 
-    public String getProductId() {
-        return productId;
+    public ProductDTO getProduct() {
+        return product;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProduct(ProductDTO product) {
+        this.product = product;
     }
 
     public StatusDTO getStatus() {
@@ -42,12 +53,12 @@ public class DwpConsumeDTO implements Serializable {
         this.status = status;
     }
 
-    public String getSource() {
-        return source;
+    public String getSourcePayroll() {
+        return sourcePayroll;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    public void setSourcePayroll(String sourcePayroll) {
+        this.sourcePayroll = sourcePayroll;
     }
 
     public AuditUserDTO getAuditUser() {
@@ -58,15 +69,43 @@ public class DwpConsumeDTO implements Serializable {
         this.auditUser = auditUser;
     }
 
+    public ChannelDTO getChannel() {
+        return channel;
+    }
+
+    public void setChannel(ChannelDTO channel) {
+        this.channel = channel;
+    }
+
+    public Date getOperationDate() {
+        return operationDate;
+    }
+
+    public void setOperationDate(Date operationDate) {
+        this.operationDate = operationDate;
+    }
+
+    public HolderDTO getHolder() {
+        return holder;
+    }
+
+    public void setHolder(HolderDTO holder) {
+        this.holder = holder;
+    }
+
     @Override
     public String toString() {
         return "DwpConsumeDTO{" +
                 "customerId='" + customerId + '\'' +
                 ", quotationId='" + quotationId + '\'' +
-                ", productId='" + productId + '\'' +
+                ", quotationIdReference='" + quotationIdReference + '\'' +
+                ", product=" + product +
                 ", status=" + status +
-                ", source='" + source + '\'' +
+                ", sourcePayroll='" + sourcePayroll + '\'' +
                 ", auditUser=" + auditUser +
+                ", channel=" + channel +
+                ", operationDate='" + operationDate + '\'' +
+                ", holder=" + holder +
                 '}';
     }
 }

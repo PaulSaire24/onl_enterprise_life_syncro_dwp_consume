@@ -22,13 +22,8 @@ public class RBVDT40801PETransaction extends AbstractRBVDT40801PETransaction {
 	public void execute() {
 		RBVDR408 rbvdR408 = this.getServiceLibrary(RBVDR408.class);
 		// TODO - Implementation of business logic
-		DwpConsumeDTO requestEventBody = new DwpConsumeDTO();
-		requestEventBody.setQuotationId(this.getQuotationid());
-		requestEventBody.setCustomerId(this.getCustomerid());
-		requestEventBody.setProductId(this.getProductid());
-		requestEventBody.setStatus(this.getStatus());
-		requestEventBody.setAuditUser(this.getAudituser());
-		requestEventBody.setSource(this.getSource());
+		DwpConsumeDTO requestEventBody;
+		requestEventBody = this.getInsuranceStatusUpdated();
 
 		boolean response = rbvdR408.executeConsumeDWPServiceForUpdateStatus(requestEventBody);
 

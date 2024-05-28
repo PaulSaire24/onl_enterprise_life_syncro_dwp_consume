@@ -1,20 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<transaction xmlns="http://www.w3schools.com" transactionName="RBVDT408" application="RBVD" version="01" country="PE" language="ES">
-	<paramsIn>
-		<parameter order="1" name="customerId" mandatory="0" type="String" size="10"/>
-		<parameter order="2" name="quotationId" mandatory="1" type="String" size="20"/>
-		<parameter order="3" name="productId" mandatory="1" type="String" size="10"/>
-		<dto order="4" name="status" mandatory="1" package="com.bbva.rbvd.dto.dwpconnection.StatusDTO" artifactId="RBVDC408">
-			<parameter order="1" name="id" mandatory="1" type="String" size="20"/>
-			<parameter order="2" name="name" mandatory="1" type="String" size="20"/>
-			<parameter order="3" name="type" mandatory="1" type="String" size="20"/>
-		</dto>
-		<parameter order="5" name="source" mandatory="1" type="String" size="5"/>
-		<dto order="6" name="auditUser" mandatory="1" package="com.bbva.rbvd.dto.dwpconnection.AuditUserDTO" artifactId="RBVDC408">
-			<parameter order="1" name="user" mandatory="1" type="String" size="10"/>
-			<parameter order="2" name="date" mandatory="0" type="String" size="30"/>
-		</dto>
-	</paramsIn>
-	<paramsOut/>
-	<description>Trx to consume messages from event to update DWP status.</description>
-</transaction>
+<transaction xmlns="http://www.w3schools.com" transactionName="RBVDT408" application="RBVD" version="1.1.0" country="PE" language="ES">
+ <paramsIn>
+  <dto order="1" name="header" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.DwpConsumeHeaderDTO" artifactId="RBVDC408">
+    <dto order="1" name="event" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.EventDTO" artifactId="RBVDC408">
+      <parameter order="1" name="name" mandatory="0" type="String" size="30" />
+      <parameter order="2" name="namespace" mandatory="0" type="String" size="30" />
+      <parameter order="3" name="timestamp" mandatory="0" type="String" size="30" />
+      <parameter order="4" name="uid" mandatory="0" type="String" size="30" />
+    </dto>
+    <dto order="2" name="flag" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.FlagDTO" artifactId="RBVDC408">
+      <parameter order="1" name="debug" mandatory="0" type="String" size="30" />
+      <parameter order="2" name="test" mandatory="0" type="String" size="30" />
+    </dto>
+    <dto order="3" name="origin" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.OriginDTO" artifactId="RBVDC408">
+      <parameter order="1" name="aap" mandatory="0" type="String" size="30" />
+      <dto order="2" name="bank" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.BankDTO" artifactId="RBVDC408">
+        <parameter order="1" name="bankId" mandatory="0" type="String" size="30" />
+        <dto order="2" name="branch" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.BranchDTO" artifactId="RBVDC408">
+          <parameter order="1" name="branchId" mandatory="0" type="String" size="30" />
+        </dto>
+      </dto>
+      <parameter order="3" name="channelCode" mandatory="0" type="String" size="30" />
+      <parameter order="4" name="country" mandatory="0" type="String" size="30" />
+      <parameter order="5" name="environCode" mandatory="0" type="String" size="30" />
+      <parameter order="6" name="ipv4" mandatory="0" type="String" size="30" />
+      <parameter order="7" name="language" mandatory="0" type="String" size="30" />
+      <parameter order="8" name="operation" mandatory="0" type="String" size="30" />
+      <parameter order="9" name="session" mandatory="0" type="String" size="30" />
+      <parameter order="10" name="timestamp" mandatory="0" type="String" size="30" />
+      <parameter order="11" name="uid" mandatory="0" type="String" size="30" />
+      <parameter order="12" name="user" mandatory="0" type="String" size="30" />
+      <parameter order="13" name="userType" mandatory="0" type="String" size="30" />
+    </dto>
+    <dto order="4" name="result" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.ResultDTO" artifactId="RBVDC408">
+      <parameter order="1" name="returnCode" mandatory="0" type="String" size="30" />
+      <parameter order="2" name="returnDefinition" mandatory="0" type="String" size="30" />
+    </dto>
+    <dto order="5" name="traces" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.header.TracesDTO" artifactId="RBVDC408">
+      <parameter order="1" name="followsSpanId" mandatory="0" type="String" size="30" />
+      <parameter order="2" name="parentSpanId" mandatory="0" type="String" size="30" />
+      <parameter order="3" name="traceId" mandatory="0" type="String" size="30" />
+    </dto>
+    <parameter order="6" name="version" mandatory="0" type="String" size="30" />
+  </dto>
+  <dto order="2" name="insuranceStatusUpdated" mandatory="1" package="com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO" artifactId="RBVDC408">
+    <parameter order="1" name="customerId" mandatory="1" type="String" size="30" />
+    <parameter order="2" name="quotationIdReference" mandatory="1" type="String" size="30" />
+    <dto order="3" name="product" mandatory="1" package="com.bbva.rbvd.dto.dwpconnection.ProductDTO" artifactId="RBVDC408">
+      <parameter order="1" name="id" mandatory="1" type="String" size="30" />
+    </dto>
+    <dto order="4" name="status" mandatory="1" package="com.bbva.rbvd.dto.dwpconnection.StatusDTO" artifactId="RBVDC408">
+      <parameter order="1" name="id" mandatory="1" type="String" size="30" />
+      <parameter order="2" name="name" mandatory="1" type="String" size="30" />
+      <parameter order="3" name="statusType" mandatory="1" type="String" size="30" />
+    </dto>
+    <parameter order="5" name="sourcePayroll" mandatory="1" type="String" size="30" />
+    <dto order="6" name="auditUser" mandatory="1" package="com.bbva.rbvd.dto.dwpconnection.AuditUserDTO" artifactId="RBVDC408">
+      <parameter order="1" name="user" mandatory="1" type="String" size="30" />
+      <parameter order="2" name="date" mandatory="0" type="String" size="30" />
+    </dto>
+    <dto order="7" name="channel" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.ChannelDTO" artifactId="RBVDC408">
+      <parameter order="1" name="id" mandatory="0" type="String" size="30" />
+      <parameter order="2" name="name" mandatory="0" type="String" size="30" />
+    </dto>
+    <parameter order="8" name="operationDate" mandatory="0" type="String" size="30" />
+    <dto order="9" name="holder" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.HolderDTO" artifactId="RBVDC408">
+      <parameter order="1" name="id" mandatory="0" type="String" size="30" />
+      <dto order="2" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.IdentityDocumentDTO" artifactId="RBVDC408">
+        <dto order="1" name="documentType" mandatory="0" package="com.bbva.rbvd.dto.dwpconnection.DocumentTypeDTO" artifactId="RBVDC408">
+          <parameter order="1" name="id" mandatory="0" type="String" size="30" />
+          <parameter order="2" name="number" mandatory="0" type="String" size="30" />
+        </dto>
+      </dto>
+    </dto>
+    <parameter order="10" name="quotationId" mandatory="1" type="String" size="30" />
+  </dto>
+ </paramsIn>
+ <paramsOut/>
+ <description>Trx to consume messages from event to update DWP status.</description>
+</transaction> 
