@@ -1,6 +1,9 @@
 package com.bbva.rbvd.dto.dwpconnection;
 
-public class DocumentTypeDTO {
+import java.io.Serializable;
+
+public class DocumentTypeDTO implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String id;
     private String number;
 

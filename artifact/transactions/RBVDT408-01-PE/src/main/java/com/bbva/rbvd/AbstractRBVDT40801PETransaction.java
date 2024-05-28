@@ -1,9 +1,7 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
-import com.bbva.rbvd.dto.dwpconnection.AuditUserDTO;
 import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
-import com.bbva.rbvd.dto.dwpconnection.StatusDTO;
 import com.bbva.rbvd.dto.dwpconnection.header.DwpConsumeHeaderDTO;
 
 /**
