@@ -73,7 +73,7 @@
         </dto>
       </dto>
     </dto>
-    <parameter order="10" name="quotationId" mandatory="1" type="String" size="30" />
+    <parameter order="10" name="quotationId" mandatory="0" type="String" size="30" />
   </dto>
  </paramsIn>
  <paramsOut/>
