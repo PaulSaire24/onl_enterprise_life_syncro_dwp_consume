@@ -25,9 +25,8 @@ public class UpdateDwpRequest {
         auditUser.setUser(requestBody.getAuditUser().getUser());
         auditUser.setDate(requestBody.getAuditUser().getDate());
 
-        DescriptionDTO channel = new DescriptionDTO();
-        channel.setId(requestBody.getChannel().getId());
-        channel.setName(requestBody.getChannel().getName());
+
+        salesForceBO.setChannel(requestBody.getChannel());
 
         salesForceBO.setOperationDate(String.valueOf(requestBody.getOperationDate()));
 
