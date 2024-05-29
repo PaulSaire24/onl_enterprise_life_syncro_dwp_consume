@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 import com.bbva.elara.utility.api.connector.APIConnector;
 import com.bbva.pdwy.dto.auth.salesforce.SalesforceResponseDTO;
 import com.bbva.pdwy.lib.r008.PDWYR008;
-import com.bbva.rbvd.dto.dwpconnection.AuditUserDTO;
-import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
-import com.bbva.rbvd.dto.dwpconnection.ProductDTO;
-import com.bbva.rbvd.dto.dwpconnection.StatusDTO;
-import com.bbva.rbvd.dto.dwpconnection.service.salesforce.SalesForceBO;
+import com.bbva.rbvd.dto.payroll.dto.DescriptionDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.AuditUserDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
+import com.bbva.rbvd.dto.payroll.salesforce.SalesForceBO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.InsuranceStatusDTO;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,6 +28,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import sun.security.krb5.internal.crypto.Des;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -69,7 +70,7 @@ public class RBVDR408Test {
 		return result;
 	}
 	/*@Test
-	public void executeTestIncokationSalesForceRestClientException(){
+	public void executeTestInvokationSalesForceRestClientException(){
 		SalesforceResponseDTO salesforceResponseDTO = new SalesforceResponseDTO();
 		salesforceResponseDTO.setAccessToken("accessToken");
 		salesforceResponseDTO.setTokenType("Bearer");
@@ -94,29 +95,33 @@ public class RBVDR408Test {
 	}*/
 
 	@Test
-	public void executeTestIncokationSalesForceOk(){
+	public void executeTestInvokationSalesForceOk(){
 		SalesforceResponseDTO salesforceResponseDTO = new SalesforceResponseDTO();
 		salesforceResponseDTO.setAccessToken("accessToken");
 		salesforceResponseDTO.setTokenType("Bearer");
-
 		SalesForceBO salesForceBO = new SalesForceBO();
-		salesForceBO.setMessage("Updated register");
-
+		salesForceBO.setMessage("Not Updated register");
 		DwpConsumeDTO dwpConsumeDTO = new DwpConsumeDTO();
-
 		dwpConsumeDTO.setQuotationId("quotationId");
 		dwpConsumeDTO.setCustomerId("customerId");
-		ProductDTO product = new ProductDTO();
+		dwpConsumeDTO.setQuotationIdReference("quotationIdReference");
+		DescriptionDTO product = new DescriptionDTO();
 		product.setId("productId");
 		dwpConsumeDTO.setProduct(product);
-		StatusDTO statusDTO = new StatusDTO();
+		InsuranceStatusDTO statusDTO = new InsuranceStatusDTO();
 		statusDTO.setId("id");
 		statusDTO.setStatusType("type");
 		dwpConsumeDTO.setStatus(statusDTO);
 		AuditUserDTO auditUserDTO = new AuditUserDTO();
 		auditUserDTO.setUser("user");
+		auditUserDTO.setDate("date");
+		DescriptionDTO channel = new DescriptionDTO();
+		channel.setId("channelId");
+		channel.setName("channelName");
+		dwpConsumeDTO.setChannel(channel);
 		dwpConsumeDTO.setAuditUser(auditUserDTO);
-		dwpConsumeDTO.setSourcePayroll("sourcePayroll");
+		dwpConsumeDTO.setSourcePayroll("source");
+		
 		when(pdwyr008.executeGetAuthenticationData(Mockito.anyString())).thenReturn(salesforceResponseDTO);
 		when(externalApiConnector.postForEntity(anyString(), anyObject(), (Class<SalesForceBO>) any())).thenReturn(new ResponseEntity<>(salesForceBO, HttpStatus.OK));
 		boolean validationResponse = rbvdR408.executeConsumeDWPServiceForUpdateStatus(dwpConsumeDTO);
@@ -125,28 +130,33 @@ public class RBVDR408Test {
 	}
 
 	@Test
-	public void executeTestIncokationSalesForceNullResponse(){
+	public void executeTestInvokationSalesForceNullResponse(){
 		SalesforceResponseDTO salesforceResponseDTO = new SalesforceResponseDTO();
 		salesforceResponseDTO.setAccessToken("accessToken");
 		salesforceResponseDTO.setTokenType("Bearer");
-
 		SalesForceBO salesForceBO = new SalesForceBO();
-		salesForceBO.setMessage("Updated register");
-
+		salesForceBO.setMessage("Not Updated register");
 		DwpConsumeDTO dwpConsumeDTO = new DwpConsumeDTO();
 		dwpConsumeDTO.setQuotationId("quotationId");
 		dwpConsumeDTO.setCustomerId("customerId");
-		ProductDTO product = new ProductDTO();
+		dwpConsumeDTO.setQuotationIdReference("quotationIdReference");
+		DescriptionDTO product = new DescriptionDTO();
 		product.setId("productId");
 		dwpConsumeDTO.setProduct(product);
-		StatusDTO statusDTO = new StatusDTO();
+		InsuranceStatusDTO statusDTO = new InsuranceStatusDTO();
 		statusDTO.setId("id");
 		statusDTO.setStatusType("type");
 		dwpConsumeDTO.setStatus(statusDTO);
 		AuditUserDTO auditUserDTO = new AuditUserDTO();
 		auditUserDTO.setUser("user");
+		auditUserDTO.setDate("date");
+		DescriptionDTO channel = new DescriptionDTO();
+		channel.setId("channelId");
+		channel.setName("channelName");
+		dwpConsumeDTO.setChannel(channel);
 		dwpConsumeDTO.setAuditUser(auditUserDTO);
 		dwpConsumeDTO.setSourcePayroll("source");
+
 		when(pdwyr008.executeGetAuthenticationData(Mockito.anyString())).thenReturn(salesforceResponseDTO);
 		when(externalApiConnector.postForEntity(anyString(), anyObject(), (Class<SalesForceBO>) any())).thenReturn(new ResponseEntity<>(null, HttpStatus.BAD_REQUEST));
 		boolean validationResponse = rbvdR408.executeConsumeDWPServiceForUpdateStatus(dwpConsumeDTO);
@@ -155,28 +165,33 @@ public class RBVDR408Test {
 	}
 
 	@Test
-	public void executeTestIncokationSalesForceBadRequestResponse(){
+	public void executeTestInvokationSalesForceBadRequestResponse(){
 		SalesforceResponseDTO salesforceResponseDTO = new SalesforceResponseDTO();
 		salesforceResponseDTO.setAccessToken("accessToken");
 		salesforceResponseDTO.setTokenType("Bearer");
-
 		SalesForceBO salesForceBO = new SalesForceBO();
 		salesForceBO.setMessage("Not Updated register");
-
 		DwpConsumeDTO dwpConsumeDTO = new DwpConsumeDTO();
 		dwpConsumeDTO.setQuotationId("quotationId");
 		dwpConsumeDTO.setCustomerId("customerId");
-		ProductDTO product = new ProductDTO();
+		dwpConsumeDTO.setQuotationIdReference("quotationIdReference");
+		DescriptionDTO product = new DescriptionDTO();
 		product.setId("productId");
 		dwpConsumeDTO.setProduct(product);
-		StatusDTO statusDTO = new StatusDTO();
+		InsuranceStatusDTO statusDTO = new InsuranceStatusDTO();
 		statusDTO.setId("id");
 		statusDTO.setStatusType("type");
 		dwpConsumeDTO.setStatus(statusDTO);
 		AuditUserDTO auditUserDTO = new AuditUserDTO();
 		auditUserDTO.setUser("user");
+		auditUserDTO.setDate("date");
+		DescriptionDTO channel = new DescriptionDTO();
+		channel.setId("channelId");
+		channel.setName("channelName");
+		dwpConsumeDTO.setChannel(channel);
 		dwpConsumeDTO.setAuditUser(auditUserDTO);
 		dwpConsumeDTO.setSourcePayroll("source");
+
 		when(pdwyr008.executeGetAuthenticationData(Mockito.anyString())).thenReturn(salesforceResponseDTO);
 		when(externalApiConnector.postForEntity(anyString(), anyObject(), (Class<SalesForceBO>) any())).thenReturn(new ResponseEntity<>(salesForceBO, HttpStatus.BAD_REQUEST));
 		boolean validationResponse = rbvdR408.executeConsumeDWPServiceForUpdateStatus(dwpConsumeDTO);
@@ -185,27 +200,33 @@ public class RBVDR408Test {
 	}
 
 	@Test
-	public void executeTestIncokationSalesForceBadRequestNullMessageResponse(){
+	public void executeTestInvokationSalesForceBadRequestNullMessageResponse(){
 		SalesforceResponseDTO salesforceResponseDTO = new SalesforceResponseDTO();
 		salesforceResponseDTO.setAccessToken("accessToken");
 		salesforceResponseDTO.setTokenType("Bearer");
-
 		SalesForceBO salesForceBO = new SalesForceBO();
-
+		salesForceBO.setMessage("Not Updated register");
 		DwpConsumeDTO dwpConsumeDTO = new DwpConsumeDTO();
 		dwpConsumeDTO.setQuotationId("quotationId");
 		dwpConsumeDTO.setCustomerId("customerId");
-		ProductDTO product = new ProductDTO();
+		dwpConsumeDTO.setQuotationIdReference("quotationIdReference");
+		DescriptionDTO product = new DescriptionDTO();
 		product.setId("productId");
 		dwpConsumeDTO.setProduct(product);
-		StatusDTO statusDTO = new StatusDTO();
+		InsuranceStatusDTO statusDTO = new InsuranceStatusDTO();
 		statusDTO.setId("id");
 		statusDTO.setStatusType("type");
 		dwpConsumeDTO.setStatus(statusDTO);
 		AuditUserDTO auditUserDTO = new AuditUserDTO();
 		auditUserDTO.setUser("user");
+		auditUserDTO.setDate("date");
+		DescriptionDTO channel = new DescriptionDTO();
+		channel.setId("channelId");
+		channel.setName("channelName");
+		dwpConsumeDTO.setChannel(channel);
 		dwpConsumeDTO.setAuditUser(auditUserDTO);
 		dwpConsumeDTO.setSourcePayroll("source");
+
 		when(pdwyr008.executeGetAuthenticationData(Mockito.anyString())).thenReturn(salesforceResponseDTO);
 		when(externalApiConnector.postForEntity(anyString(), anyObject(), (Class<SalesForceBO>) any())).thenReturn(new ResponseEntity<>(salesForceBO, HttpStatus.BAD_REQUEST));
 		boolean validationResponse = rbvdR408.executeConsumeDWPServiceForUpdateStatus(dwpConsumeDTO);

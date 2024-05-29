@@ -1,22 +1,38 @@
 package com.bbva.rbvd.lib.r408.transform.bean;
 
-import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
-import com.bbva.rbvd.dto.dwpconnection.service.salesforce.SalesForceBO;
-import com.bbva.rbvd.dto.dwpconnection.service.salesforce.StatusBO;
+
+import com.bbva.rbvd.dto.payroll.dto.DescriptionDTO;
+import com.bbva.rbvd.dto.payroll.salesforce.SalesForceBO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.AuditUserDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
 
 public class UpdateDwpRequest {
+    private UpdateDwpRequest(){}
+
     public static SalesForceBO mapRequestToSalesForceDwpBean(DwpConsumeDTO requestBody){
         SalesForceBO salesForceBO = new SalesForceBO();
-        salesForceBO.setIdQuotation(requestBody.getQuotationId());
-        salesForceBO.setIdCustomer(requestBody.getCustomerId());
-        salesForceBO.setIdProduct(requestBody.getProduct().getId());
+        salesForceBO.setQuotationId(requestBody.getQuotationId());
+        salesForceBO.setCustomerId(requestBody.getCustomerId());
+        salesForceBO.setQuotationIdRef(requestBody.getQuotationIdReference());
+        salesForceBO.setProductId(requestBody.getProduct().getId());
 
-        StatusBO statusBO = new StatusBO();
+        DescriptionDTO statusBO = new DescriptionDTO();
         statusBO.setId(requestBody.getStatus().getId());
         statusBO.setName(requestBody.getStatus().getName());
         salesForceBO.setStatus(statusBO);
-        salesForceBO.setEmployeeCode(requestBody.getAuditUser().getUser());
-        salesForceBO.setSource(requestBody.getSourcePayroll());
+
+        AuditUserDTO auditUser = new AuditUserDTO();
+        auditUser.setUser(requestBody.getAuditUser().getUser());
+        auditUser.setDate(requestBody.getAuditUser().getDate());
+
+        DescriptionDTO channel = new DescriptionDTO();
+        channel.setId(requestBody.getChannel().getId());
+        channel.setName(requestBody.getChannel().getName());
+
+        salesForceBO.setOperationDate(String.valueOf(requestBody.getOperationDate()));
+
+        salesForceBO.setSourcePayroll(requestBody.getSourcePayroll());
+
         return salesForceBO;
     }
 }

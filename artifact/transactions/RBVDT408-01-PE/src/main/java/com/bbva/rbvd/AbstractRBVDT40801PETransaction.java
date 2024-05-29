@@ -1,8 +1,8 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
-import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
-import com.bbva.rbvd.dto.dwpconnection.header.DwpConsumeHeaderDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.header.DwpConsumeHeaderDTO;
 
 /**
  * In this class, the input and output data is defined automatically through the setters and getters.

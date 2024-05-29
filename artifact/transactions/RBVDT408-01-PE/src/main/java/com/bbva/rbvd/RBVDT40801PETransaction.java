@@ -2,8 +2,8 @@ package com.bbva.rbvd;
 
 import com.bbva.elara.domain.transaction.Severity;
 import com.bbva.elara.domain.transaction.response.HttpResponseCode;
-import com.bbva.rbvd.dto.dwpconnection.DwpConsumeDTO;
-import com.bbva.rbvd.dto.dwpconnection.header.DwpConsumeHeaderDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.header.DwpConsumeHeaderDTO;
 import com.bbva.rbvd.lib.r408.RBVDR408;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
