@@ -6,6 +6,9 @@ import com.bbva.rbvd.dto.payroll.salesforce.SalesForceBO;
 import com.bbva.rbvd.dto.payroll.upsilon.body.AuditUserDTO;
 import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class UpdateDwpRequest {
     private UpdateDwpRequest(){}
 
@@ -21,14 +24,15 @@ public class UpdateDwpRequest {
         statusBO.setName(requestBody.getStatus().getName());
         salesForceBO.setStatus(statusBO);
 
-        AuditUserDTO auditUser = new AuditUserDTO();
-        auditUser.setUser(requestBody.getAuditUser().getUser());
-        auditUser.setDate(requestBody.getAuditUser().getDate());
 
-
+        salesForceBO.setAuditUser(requestBody.getAuditUser());
         salesForceBO.setChannel(requestBody.getChannel());
 
-        salesForceBO.setOperationDate(String.valueOf(requestBody.getOperationDate()));
+        LocalDate currentDate = LocalDate.now();
+
+        String formattedDate = currentDate.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+
+        salesForceBO.setOperationDate(formattedDate);
 
         salesForceBO.setSourcePayroll(requestBody.getSourcePayroll());
 
