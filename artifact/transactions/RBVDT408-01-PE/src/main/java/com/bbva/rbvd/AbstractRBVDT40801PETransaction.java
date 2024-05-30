@@ -1,7 +1,7 @@
 package com.bbva.rbvd;
 
 import com.bbva.elara.transaction.AbstractTransaction;
-import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeBodyDTO;
 import com.bbva.rbvd.dto.payroll.upsilon.header.DwpConsumeHeaderDTO;
 
 /**
@@ -21,5 +21,5 @@ public abstract class AbstractRBVDT40801PETransaction extends AbstractTransactio
 	/**
 	 * Return value for input parameter insuranceStatusUpdated
 	 */
-	protected DwpConsumeDTO getInsuranceStatusUpdated() {return (DwpConsumeDTO)this.getParameter("insuranceStatusUpdated");}
+	protected DwpConsumeBodyDTO getInsuranceStatusUpdated() {return (DwpConsumeBodyDTO)this.getParameter("insuranceStatusUpdated");}
 }

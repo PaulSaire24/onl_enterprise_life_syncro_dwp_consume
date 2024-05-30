@@ -2,7 +2,7 @@ package com.bbva.rbvd;
 
 import com.bbva.elara.domain.transaction.Severity;
 import com.bbva.elara.domain.transaction.response.HttpResponseCode;
-import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeBodyDTO;
 import com.bbva.rbvd.dto.payroll.upsilon.header.DwpConsumeHeaderDTO;
 import com.bbva.rbvd.lib.r408.RBVDR408;
 import org.slf4j.Logger;
@@ -23,7 +23,7 @@ public class RBVDT40801PETransaction extends AbstractRBVDT40801PETransaction {
 	public void execute() {
 		RBVDR408 rbvdR408 = this.getServiceLibrary(RBVDR408.class);
 		// TODO - Implementation of business logic
-		DwpConsumeDTO requestEventBody;
+		DwpConsumeBodyDTO requestEventBody;
 		requestEventBody = this.getInsuranceStatusUpdated();
 		DwpConsumeHeaderDTO header = this.getHeader();
 		LOGGER.info("RBVDT40801PETransaction - execute() | START");

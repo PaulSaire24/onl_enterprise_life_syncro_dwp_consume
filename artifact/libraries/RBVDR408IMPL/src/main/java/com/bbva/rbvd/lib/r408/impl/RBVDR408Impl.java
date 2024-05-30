@@ -2,7 +2,7 @@ package com.bbva.rbvd.lib.r408.impl;
 
 import com.bbva.pdwy.dto.auth.salesforce.SalesforceResponseDTO;
 import com.bbva.rbvd.dto.payroll.salesforce.SalesForceBO;
-import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO;
+import com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeBodyDTO;
 import com.bbva.rbvd.lib.r408.impl.util.JsonHelper;
 import com.bbva.rbvd.lib.r408.transform.bean.UpdateDwpRequest;
 import org.slf4j.Logger;
@@ -26,7 +26,7 @@ public class RBVDR408Impl extends RBVDR408Abstract {
 	private static final String AUTHORIZATION_HEADER = "Authorization";
 	private static final String SERVICE_CONNECTION_PROPERTY = "dwpUpdateSalesForce";
 	@Override
-	public boolean executeConsumeDWPServiceForUpdateStatus(DwpConsumeDTO requestBody) {
+	public boolean executeConsumeDWPServiceForUpdateStatus(DwpConsumeBodyDTO requestBody) {
 		LOGGER.info("***** RBVDR408Impl - executeConsumeDWPServiceForUpdateStatus START *****");
 		LOGGER.info("***** RBVDR408Impl - invoke - pdwyR008.executeGetAuthenticationData ***** Param: {}", "dwpWServiceToken");
 		SalesforceResponseDTO authentication =  pdwyR008.executeGetAuthenticationData(SERVICE_CONNECTION_PROPERTY);

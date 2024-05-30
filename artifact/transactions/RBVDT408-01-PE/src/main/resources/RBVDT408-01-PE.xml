@@ -43,7 +43,7 @@
     </dto>
     <parameter order="6" name="version" mandatory="0" type="String" size="30" />
   </dto>
-  <dto order="2" name="insuranceStatusUpdated" mandatory="1" package="com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeDTO" artifactId="RBVDC409">
+  <dto order="2" name="insuranceStatusUpdated" mandatory="1" package="com.bbva.rbvd.dto.payroll.upsilon.body.DwpConsumeBodyDTO" artifactId="RBVDC409">
     <parameter order="1" name="customerId" mandatory="1" type="String" size="30" />
     <parameter order="2" name="quotationIdReference" mandatory="1" type="String" size="30" />
     <dto order="3" name="product" mandatory="1" package="com.bbva.rbvd.dto.payroll.dto.DescriptionDTO" artifactId="RBVDC409">
