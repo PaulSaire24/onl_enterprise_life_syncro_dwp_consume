@@ -37,7 +37,7 @@
       <parameter order="2" name="returnDefinition" mandatory="0" type="String" size="30" />
     </dto>
     <dto order="5" name="traces" mandatory="0" package="com.bbva.rbvd.dto.payroll.upsilon.header.TracesDTO" artifactId="RBVDC409">
-      <parameter order="1" name="followsSpanId" mandatory="0" type="String" size="30" />
+      <parameter order="1" name="followsSpanId" mandatory="0" type="String" size="36" />
       <parameter order="2" name="parentSpanId" mandatory="0" type="String" size="36" />
       <parameter order="3" name="traceId" mandatory="0" type="String" size="36" />
     </dto>
