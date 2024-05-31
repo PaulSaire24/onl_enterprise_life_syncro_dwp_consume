@@ -63,7 +63,7 @@
       <parameter order="1" name="id" mandatory="0" type="String" size="30" />
       <parameter order="2" name="name" mandatory="0" type="String" size="30" />
     </dto>
-    <parameter order="8" name="operationDate" mandatory="0" type="String" size="36" />
+    <parameter order="8" name="operationDate" mandatory="0" type="Date (YYYY-MM-DD)" size="0"/>
     <dto order="9" name="holder" mandatory="0" package="com.bbva.rbvd.dto.payroll.upsilon.body.HolderDTO" artifactId="RBVDC409">
       <parameter order="1" name="id" mandatory="0" type="String" size="30" />
       <dto order="2" name="identityDocument" mandatory="0" package="com.bbva.rbvd.dto.payroll.dto.IdentityDocumentDTO" artifactId="RBVDC409">
