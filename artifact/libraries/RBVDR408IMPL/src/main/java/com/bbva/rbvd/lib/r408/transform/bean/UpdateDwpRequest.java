@@ -28,7 +28,7 @@ public class UpdateDwpRequest {
         salesForceBO.setAuditUser(requestBody.getAuditUser());
         DescriptionDTO channel = new DescriptionDTO();
         channel.setId(Objects.equals(requestBody.getChannel().getId(), "PC") ?ConstantsUtils.DwpQuotationPayrollStatus.CHANNEL_FU: "SENDA") ;
-        salesForceBO.setChannel(requestBody.getChannel());
+        salesForceBO.setChannel(channel);
 
         LocalDate currentDate = LocalDate.now();
 
