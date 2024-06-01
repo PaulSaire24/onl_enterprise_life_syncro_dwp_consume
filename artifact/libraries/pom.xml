@@ -12,5 +12,8 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>LIBRARIES-onl_enterprise_life_syncro_dwp_consume</name>
-	<modules/>
+	<modules>
+		<module>RBVDR408</module>
+		<module>RBVDR408IMPL</module>
+	</modules>
 </project>
