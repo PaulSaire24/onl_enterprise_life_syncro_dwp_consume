@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>com.bbva.rbvd</groupId>
 		<artifactId>LIBRARIES-onl_enterprise_life_syncro_dwp_consume</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 	</parent>
 	<groupId>com.bbva.rbvd</groupId>
 	<artifactId>RBVDR408IMPL</artifactId>
 	<name>RBVDR408IMPL</name>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<packaging>bundle</packaging>
 	<description>Library to run business logic to update DWP status.</description>
 	<properties>
@@ -19,7 +19,7 @@
 		<dependency>
 			<groupId>com.bbva.rbvd</groupId>
 			<artifactId>RBVDR408</artifactId>
-			<version>0.1.0</version>
+			<version>0.1.1</version>
 		</dependency>
 		<dependency>
 			<groupId>com.bbva.elara</groupId>
