@@ -24,7 +24,7 @@ public class RBVDR408Impl extends RBVDR408Abstract {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(RBVDR408Impl.class);
 	private static final String AUTHORIZATION_HEADER = "Authorization";
-	private static final String SERVICE_CONNECTION_PROPERTY = "dwpUpdateSalesForce";
+	private static final String SERVICE_CONNECTION_PROPERTY = "updateStatusSalesForceDwp";
 	@Override
 	public boolean executeConsumeDWPServiceForUpdateStatus(DwpConsumeBodyDTO requestBody) {
 		LOGGER.info("***** RBVDR408Impl - executeConsumeDWPServiceForUpdateStatus START *****");
